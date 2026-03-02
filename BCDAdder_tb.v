@@ -7,7 +7,7 @@ module BCDAdder_tb();
     wire[3:0] newB;
     wire Co;
     
-    BCDAdder utt(A,B,S3,S2,S1,S0);
+    BCDAdder utt(A,B,S3,S2,S1,S0,Co);
     
     integer k,j;
     
