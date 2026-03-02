@@ -452,8 +452,8 @@ To map the BCD adder to an FPGA:
   - Correction logic C<sub>corr</sub> = C\* + S<sub>3*</sub>·S<sub>2*</sub> + S<sub>3*</sub>·S<sub>1*</sub>,
   - Second adder that conditionally adds 6 (0110).
 - `BCDAdder_tb.v` — Testbench that exercises the adder with BCD inputs and prints A, B, C, and BCD\_Sum, verifying correctness against the decimal sum.
-- fourBitAdder.v - Module used to compute the sum of 4 bit binary numbers. Copy and pasted from a previous project I made
-- fullAdder.v - Module used by fourBitAdder.v to compute a 1 bit sum of binary numbers throguh ripply carry method
+- `fourBitAdder.v` - Module used to compute the sum of 4 bit binary numbers. Copy and pasted from a previous project I made
+- `fullAdder.v` - Module used by fourBitAdder.v to compute a 1 bit sum of binary numbers throguh ripply carry method
 
 ---
 
