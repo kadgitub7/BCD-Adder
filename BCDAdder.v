@@ -7,7 +7,6 @@ module BCDAdder(
     
     wire S_3,S_2,S_1,S_0,C_int, OR_Result;
     wire[3:0] newB;
-    wire Co;
     
     fourBitAdder f1(A,B,1'b0,S_0,S_1,S_2,S_3,C_int);
     
