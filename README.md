@@ -231,8 +231,6 @@ You can reference a schematic like:
 
 ![4-Bit BCD Adder Circuit](imageAssets/BCDCircuit.png)
 
-*(Update the image path/name as appropriate for your project.)*
-
 ---
 
 ## Waveform Diagram
@@ -253,8 +251,6 @@ For each input pair (A, B), the waveform confirms that the outputs correspond to
 Example waveform illustration:
 
 ![4-Bit BCD Adder Waveform](imageAssets/BCDWaveform.png)
-
-*(Update the image path/name as appropriate for your project.)*
 
 ---
 
@@ -409,20 +405,20 @@ Follow these steps to open and simulate the BCD adder in **Vivado**.
 
 1. In the **Add Sources** step, add the Verilog design files:
    - **Design sources:**
-     - `bcd_adder.v` — 4-bit BCD adder module:
+     - `BCDAdder.v` — 4-bit BCD adder module:
        - Inputs: `A[3:0]`, `B[3:0]` (and optionally `Cin`).
        - Outputs: `BCD_Sum[3:0]`, `C`.
    - **Simulation sources:**
-     - `bcd_adder_tb.v` — testbench that applies BCD input combinations and prints A, B, C, and BCD\_Sum.
+     - `BCDAdder_tb.v` — testbench that applies BCD input combinations and prints A, B, C, and BCD\_Sum.
 2. In the **Sources** window:
-   - Under **Simulation Sources**, right-click `bcd_adder_tb.v` and choose **Set as Top**.
+   - Under **Simulation Sources**, right-click `BCDAdder_tb.v` and choose **Set as Top**.
 3. Click **Next**, select a suitable **target device** (for simulation only, default is fine), then **Next** and **Finish**.
 
 ### 4. Run Behavioral Simulation
 
 1. In the **Flow Navigator** (left panel), under **Simulation**, click **Run Behavioral Simulation**.
 2. Vivado will:
-   - Elaborate `bcd_adder` as the DUT.
+   - Elaborate `BCDAdder` as the DUT.
    - Compile and open the **Simulation** view with the waveform.
 3. In the waveform window, verify that:
    - A and B cycle through BCD digit patterns (0000–1001).
@@ -431,7 +427,7 @@ Follow these steps to open and simulate the BCD adder in **Vivado**.
 ### 5. (Optional) Modify and Re-run
 
 - To re-run simulation after edits:
-  - Edit `bcd_adder.v` or `bcd_adder_tb.v`.
+  - Edit `BCDAdder.v` or `BCDAdder_tb.v`.
   - Save your changes.
   - Use **Run Behavioral Simulation** again (or the **Re-run** button in the simulation toolbar).
 
@@ -439,7 +435,7 @@ Follow these steps to open and simulate the BCD adder in **Vivado**.
 
 To map the BCD adder to an FPGA:
 
-1. In **Sources**, right-click the top-level design module (`bcd_adder.v`) and choose **Set as Top** for synthesis.
+1. In **Sources**, right-click the top-level design module (`BCDAdder.v`) and choose **Set as Top** for synthesis.
 2. Run **Synthesis** and then **Implementation** from the Flow Navigator.
 3. Create a constraints file (e.g., `.xdc`) assigning pins for:
    - A[3:0], B[3:0]
@@ -451,15 +447,14 @@ To map the BCD adder to an FPGA:
 
 ## Project Files
 
-- `bcd_adder.v` — RTL for the 4-bit BCD adder, implementing:
+- `BCDAdder.v` — RTL for the 4-bit BCD adder, implementing:
   - First binary adder (A + B → S\*, C\*),
   - Correction logic C<sub>corr</sub> = C\* + S<sub>3*</sub>·S<sub>2*</sub> + S<sub>3*</sub>·S<sub>1*</sub>,
   - Second adder that conditionally adds 6 (0110).
-- `bcd_adder_tb.v` — Testbench that exercises the adder with BCD inputs and prints A, B, C, and BCD\_Sum, verifying correctness against the decimal sum.
+- `BCDAdder_tb.v` — Testbench that exercises the adder with BCD inputs and prints A, B, C, and BCD\_Sum, verifying correctness against the decimal sum.
+- fourBitAdder.v - Module used to compute the sum of 4 bit binary numbers. Copy and pasted from a previous project I made
+- fullAdder.v - Module used by fourBitAdder.v to compute a 1 bit sum of binary numbers throguh ripply carry method
 
 ---
 
 *Author: **Kadhir Ponnambalam***
-
-# BCD-Adder
-Implemented a BCD(Binary Coded Decimal) Adder in Vivado using Verilog
