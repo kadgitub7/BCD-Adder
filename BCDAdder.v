@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module BCDAdder_tb(
+module BCDAdder(
     input[3:0] A,B,
     output S3,S2,S1,S0
     );
